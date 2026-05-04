@@ -1,0 +1,61 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Github\\UartComManager\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B38A4625-9723-4208-A86A-C77A8DC4EA95}|UartComManager\\UartComManager.csproj|d:\\github\\uartcommanager\\uartcommanager\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B38A4625-9723-4208-A86A-C77A8DC4EA95}|UartComManager\\UartComManager.csproj|solutionrelative:uartcommanager\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B38A4625-9723-4208-A86A-C77A8DC4EA95}|UartComManager\\UartComManager.csproj|d:\\github\\uartcommanager\\uartcommanager\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B38A4625-9723-4208-A86A-C77A8DC4EA95}|UartComManager\\UartComManager.csproj|solutionrelative:uartcommanager\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "D:\\Github\\UartComManager\\UartComManager\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "UartComManager\\MainWindow.xaml",
+              "ToolTip": "D:\\Github\\UartComManager\\UartComManager\\MainWindow.xaml",
+              "RelativeToolTip": "UartComManager\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-04T17:32:03.127Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "D:\\Github\\UartComManager\\UartComManager\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "UartComManager\\MainWindow.xaml.cs",
+              "ToolTip": "D:\\Github\\UartComManager\\UartComManager\\MainWindow.xaml.cs",
+              "RelativeToolTip": "UartComManager\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-04T17:32:02.974Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
