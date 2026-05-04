@@ -50,6 +50,20 @@
       "frameworks": {
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
+          "dependencies": {
+            "HidLibrary.Unofficial": {
+              "target": "Package",
+              "version": "[3.3.50, )"
+            },
+            "System.IO.Ports": {
+              "target": "Package",
+              "version": "[10.0.7, )"
+            },
+            "System.Management": {
+              "target": "Package",
+              "version": "[10.0.7, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

@@ -8,4 +8,10 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="HidLibrary.Unofficial" Version="3.3.50" />
+    <PackageReference Include="System.IO.Ports" Version="10.0.7" />
+    <PackageReference Include="System.Management" Version="10.0.7" />
+  </ItemGroup>
+
 </Project>

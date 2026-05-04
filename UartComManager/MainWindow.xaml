@@ -1,12 +1,310 @@
-﻿<Window x:Class="UartComManager.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:UartComManager"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+﻿<Window
+    x:Class="UartComManager.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:shell="clr-namespace:System.Windows.Shell;assembly=PresentationFramework"
+    Title="UART Tool"
+    Width="900"
+    Height="600"
+    Background="#121212"
+    ResizeMode="CanResize"
+    WindowStyle="None">
+
+    <!--  WINDOW CHROME  -->
+    <shell:WindowChrome.WindowChrome>
+        <shell:WindowChrome
+            CaptionHeight="40"
+            CornerRadius="8"
+            ResizeBorderThickness="5" />
+    </shell:WindowChrome.WindowChrome>
+
+    <Window.Resources>
+
+        <!--  NORMAL BUTTON  -->
+        <Style x:Key="TitleBarButton" TargetType="Button">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Cursor" Value="Hand" />
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="bg" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+
+                            <!--  HOVER  -->
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="bg" Property="Background" Value="#333333" />
+                            </Trigger>
+
+                            <!--  CLICK  -->
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="bg" Property="Background" Value="#555555" />
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!--  CLOSE BUTTON  -->
+        <Style x:Key="CloseButton" TargetType="Button">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Cursor" Value="Hand" />
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="bg" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+
+                            <!--  HOVER  -->
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="bg" Property="Background" Value="#E81123" />
+                            </Trigger>
+
+                            <!--  CLICK  -->
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="bg" Property="Background" Value="#C50F1F" />
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+        <!--  BUTTON  -->
+        <Style x:Key="ModernButton" TargetType="Button">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Background" Value="#0078D7" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Padding" Value="10,5" />
+            <Setter Property="Cursor" Value="Hand" />
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border
+                            x:Name="bg"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="4">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+
+                            <!--  HOVER  -->
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="bg" Property="Background" Value="#33FFFFFF" />
+                            </Trigger>
+
+                            <!--  CLICK  -->
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="bg" Property="Background" Value="#005A9E" />
+                            </Trigger>
+
+                            <!--  DISABLED  -->
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="bg" Property="Opacity" Value="0.5" />
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
     <Grid>
+
+        <!--  ROWS  -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!--  🔷 TITLE BAR  -->
+        <Grid
+            Grid.Row="0"
+            Background="#1E1E1E"
+            MouseDown="TitleBar_MouseDown">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="51*" />
+                <ColumnDefinition Width="209*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <!--  TITLE  -->
+            <TextBlock
+                Height="16"
+                Margin="10,0,0,0"
+                VerticalAlignment="Center"
+                FontWeight="Bold"
+                Foreground="White"
+                Text="UART Tool" />
+            <TextBlock
+                x:Name="infos"
+                Grid.Column="1"
+                Height="16"
+                Margin="10,0,10,0"
+                VerticalAlignment="Center"
+                FontSize="14"
+                FontWeight="Bold"
+                Foreground="#FFFDFF00"
+                Text="" />
+            <!--  BUTTONS  -->
+            <StackPanel Grid.Column="2" Orientation="Horizontal">
+                <Button
+                    Width="40"
+                    shell:WindowChrome.IsHitTestVisibleInChrome="True"
+                    Click="Min_Click"
+                    Content="—"
+                    Style="{StaticResource TitleBarButton}" />
+
+                <Button
+                    Width="40"
+                    shell:WindowChrome.IsHitTestVisibleInChrome="True"
+                    Click="Max_Click"
+                    Content="☐"
+                    Style="{StaticResource TitleBarButton}" />
+
+                <Button
+                    Width="40"
+                    shell:WindowChrome.IsHitTestVisibleInChrome="True"
+                    Click="Close_Click"
+                    Content="✕"
+                    Style="{StaticResource CloseButton}" />
+            </StackPanel>
+        </Grid>
+
+        <!--  🔷 CONTENT  -->
+        <Grid Grid.Row="1" Margin="10">
+
+            <TabControl
+                x:Name="tabPanel"
+                Background="#1E1E1E"
+                BorderBrush="#999"
+                Foreground="White">
+
+                <!--  UART  -->
+                <TabItem Header="UART">
+                    <Grid Margin="10">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <!--  ÜST  -->
+                        <StackPanel Orientation="Horizontal">
+
+                            <ComboBox
+                                x:Name="cbPort"
+                                Width="150"
+                                Margin="5" />
+                            <ComboBox
+                                x:Name="cbBaud"
+                                Width="120"
+                                Margin="5" />
+
+                            <Button
+                                x:Name="btnConnect"
+                                Width="100"
+                                Margin="5"
+                                Click="BtnConnect_Click"
+                                Content="Bağlan"
+                                Style="{StaticResource ModernButton}" />
+
+                            <Button
+                                Width="100"
+                                Margin="5"
+                                Background="#C83C3C"
+                                Click="BtnClear_Click"
+                                Content="Temizle"
+                                Style="{StaticResource ModernButton}" />
+                            <CheckBox
+                                x:Name="chkAutoScroll"
+                                Margin="5"
+                                Content="Auto Scroll"
+                                Foreground="White"
+                                IsChecked="True" />
+                        </StackPanel>
+
+                        <!--  GÖNDER  -->
+                        <StackPanel Grid.Row="1" Orientation="Horizontal">
+
+                            <TextBox
+                                x:Name="txtSend"
+                                Width="400"
+                                Margin="5"
+                                Background="#242424"
+                                Foreground="White" />
+
+                            <Button
+                                Width="100"
+                                Margin="5"
+                                Background="#0078D7"
+                                Click="BtnSend_Click"
+                                Content="Gönder"
+                                Style="{StaticResource ModernButton}" />
+                        </StackPanel>
+
+                        <!--  RECEIVER  -->
+                        <TextBox
+                            x:Name="txtReceiver"
+                            Grid.Row="2"
+                            Margin="5"
+                            AcceptsReturn="True"
+                            Background="#1e1e1e"
+                            BorderBrush="#999"
+                            FontFamily="Consolas"
+                            Foreground="White"
+                            VerticalScrollBarVisibility="Auto" />
+
+                    </Grid>
+                </TabItem>
+
+                <!--  HID  -->
+                <TabItem Header="HID">
+                    <Grid Margin="10">
+
+                        <StackPanel>
+                            <ComboBox x:Name="cbDevice" Margin="5" />
+
+                            <Button
+                                Width="120"
+                                Margin="5"
+                                Background="#00B478"
+                                Content="Bağlan"
+                                Style="{StaticResource ModernButton}" />
+
+                            <TextBox
+                                Height="200"
+                                Margin="5"
+                                Background="#1E1E1E"
+                                Foreground="White" />
+                        </StackPanel>
+
+                    </Grid>
+                </TabItem>
+
+            </TabControl>
+
+        </Grid>
 
     </Grid>
 </Window>

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("UartComManager")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+295177dc58b46b1b1686684fb4c33531edc6c383")]
 [assembly: System.Reflection.AssemblyProductAttribute("UartComManager")]
 [assembly: System.Reflection.AssemblyTitleAttribute("UartComManager")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
